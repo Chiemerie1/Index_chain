@@ -11,6 +11,7 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+  
   String open = "open";
 
   String appTitle = "IndexChain";

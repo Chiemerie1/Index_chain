@@ -4,13 +4,15 @@
 import 'package:flutter/material.dart';
 import 'package:indexchain/pages/login.dart';
 import 'package:indexchain/pages/signup.dart';
+import 'package:indexchain/pages/index.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: "/signup",
+    initialRoute: "/index",
     routes: {
       "/": (context) => LogIn(),
-      "/signup": (context) => SignUp()
+      "/signup": (context) => SignUp(),
+      "/index": ((context) => IndexPage())
     }
     
 
