@@ -45,7 +45,7 @@ class _LogInState extends State<LogIn> {
               //   ),
               // ),
               SizedBox(height: 40.0),
-              Image.asset("assets/pos_logo.png", scale: 3.0),
+              Image.asset("assets/index_logo.png", scale: 3.0),
               SizedBox(height: 20.0),
               
               // ######### log in details #########

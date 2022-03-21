@@ -2,25 +2,42 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:indexchain/pages/activity.dart';
+import 'package:indexchain/pages/home.dart';
 import 'package:indexchain/pages/login.dart';
+import 'package:indexchain/pages/settings.dart';
 import 'package:indexchain/pages/signup.dart';
 import 'package:indexchain/pages/index.dart';
+import 'package:indexchain/provider/coins.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MaterialApp(
-    initialRoute: "/index",
-    routes: {
-      "/": (context) => LogIn(),
-      "/signup": (context) => SignUp(),
-      "/index": ((context) => IndexPage())
-    }
-    
-
-  ));
-  
+  runApp(MyApp());
 }
 
 
+class MyApp extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => CoinProvider(),
+      child: MaterialApp(
+      initialRoute: "/",
+      routes: {
+        "/":(context) => Home(),
+        "/login": (context) => LogIn(),
+        "/signup": (context) => SignUp(),
+        "/index": (context) => IndexPage(),
+        "/activity":(context) => Activity(),
+        "/settings":(context) => Settings(),
+      }
+      ),
+    );
+      
+   
+  }
+}
 
 
 
