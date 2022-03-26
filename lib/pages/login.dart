@@ -101,7 +101,7 @@ class _LogInState extends State<LogIn> {
               
               SizedBox(height: 40),
               TextButton.icon(
-                onPressed: () {},
+                onPressed: () {Navigator.pushReplacementNamed(context, "/");},
                 icon: Icon(Icons.app_registration_rounded, color: Colors.purple[900],),
                 label: Text(
                   "Don't already have an account? sign up",

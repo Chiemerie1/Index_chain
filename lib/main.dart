@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:indexchain/pages/activity.dart';
 import 'package:indexchain/pages/home.dart';
 import 'package:indexchain/pages/login.dart';
-import 'package:indexchain/pages/settings.dart';
+import 'package:indexchain/pages/settings_children/contact_admin.dart';
+import 'package:indexchain/pages/settings_children/settings.dart';
+import 'package:indexchain/pages/settings_children/swap_coin.dart';
 import 'package:indexchain/pages/signup.dart';
 import 'package:indexchain/pages/index.dart';
+import 'package:indexchain/pages/address.dart';
 import 'package:indexchain/provider/coins.dart';
 import 'package:provider/provider.dart';
+import 'package:indexchain/pages/settings_children/change_password.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +27,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => CoinProvider(),
       child: MaterialApp(
-      initialRoute: "/",
+      initialRoute: "/swap",
       routes: {
         "/":(context) => Home(),
         "/login": (context) => LogIn(),
@@ -31,6 +35,10 @@ class MyApp extends StatelessWidget {
         "/index": (context) => IndexPage(),
         "/activity":(context) => Activity(),
         "/settings":(context) => Settings(),
+        "/address": (context) => Address(),
+        "/change_Password": (context) => ChangePassword(),
+        "/contact_admin": (context) => ContactAdmin(),
+        "/swap": (context) => Swap(),
       }
       ),
     );

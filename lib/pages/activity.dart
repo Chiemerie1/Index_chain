@@ -26,30 +26,6 @@ class _ActivityState extends State<Activity> {
     final total = provider.total;
 
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.purple[900],
-        // title: Text(
-        //   "Activity",
-        //   style: TextStyle(
-        //     fontFamily: "Fredoka",
-        //     fontWeight: FontWeight.bold,
-        //     letterSpacing: 2,
-        //     color: Colors.white
-        //   ),
-        // ),
-        // ###### AppBAr widgets ######
-        actions: [
-          IconButton(
-            onPressed: () {}, 
-            icon: Icon(Icons.add_box_outlined, color: Colors.purple[900],)),
-          IconButton(
-            onPressed:() {},
-            icon: Icon(Icons.settings_applications, color: Colors.purple[900]),
-          )
-        ],
-        elevation: 0.0
-      ),
       backgroundColor: Colors.purple[900],
       body: SingleChildScrollView(
         child: Column(

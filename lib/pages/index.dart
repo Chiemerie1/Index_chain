@@ -29,7 +29,7 @@ class _IndexPageState extends State<IndexPage> {
     final total = provider.total;
 
     return Scaffold(
-      
+      backgroundColor: Colors.grey[50],
       body: Column(
         children: [
           Card(

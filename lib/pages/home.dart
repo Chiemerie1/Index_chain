@@ -3,7 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:indexchain/pages/activity.dart';
+import 'package:indexchain/pages/address.dart';
 import 'package:indexchain/pages/index.dart';
+import 'package:indexchain/pages/settings_children/settings.dart';
 
 
 
@@ -27,9 +29,8 @@ class _HomeState extends State<Home> {
   final navBarPages = [
     IndexPage(),
     Card(child: Text("Wallet address"),),
-    Card(child: Text("Wallet address"),),
     Activity(),
-    Card(child: Text("Wallet address"),),
+    Settings(),
   ];
 
   
@@ -39,9 +40,9 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.purple[900],
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[50],
         title: Text(
-          "Wallet",
+          "Indexchain",
           style: TextStyle(
             fontFamily: "Fredoka",
             fontWeight: FontWeight.bold,
@@ -66,31 +67,26 @@ class _HomeState extends State<Home> {
         type: BottomNavigationBarType.shifting,
         currentIndex: currentIndex,
         onTap:(index) => setState(() => currentIndex = index),
-
         selectedItemColor: Colors.purple[900],
         items: [
           BottomNavigationBarItem(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.grey[50],
           icon: Icon(Icons.home_work, color: Colors.grey[900]),
           label: "Home"
           ),
+          
           BottomNavigationBarItem(
-            backgroundColor: Colors.white,
-            icon: Icon(Icons.business_center_rounded, color: Colors.grey[900],),
-            label: "Address",
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.grey[50],
             icon: Icon(Icons.bar_chart_rounded, color: Colors.grey[900]),
             label: "prices",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.purple[900],
+            backgroundColor: Colors.grey[50],
             icon: Icon(Icons.hive, color: Colors.purple[900]),
             label: "Activity",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.grey[50],
           icon: Icon(Icons.settings, color: Colors.grey[900]),
           label: "Setttings",
           ),
