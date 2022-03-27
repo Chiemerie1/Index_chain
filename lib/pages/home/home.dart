@@ -2,9 +2,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:indexchain/pages/activity.dart';
-import 'package:indexchain/pages/address.dart';
-import 'package:indexchain/pages/index.dart';
+import 'package:indexchain/pages/home/activity.dart';
+import 'package:indexchain/pages/home/index.dart';
 import 'package:indexchain/pages/settings_children/settings.dart';
 
 
