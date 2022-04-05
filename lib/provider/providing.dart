@@ -58,6 +58,8 @@ class AuthService {
     return _auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
+  //####### Anonymous ########
+
   Future signInAnon() async {
     try {
       UserCredential userCredential = await _auth.signInAnonymously();
@@ -67,28 +69,50 @@ class AuthService {
       print(e.toString());
     }
   }
+    //####### Anonymous ########
+
+    //####### User Resgistration ########
   
-  // Future registerWithEmailAndPassword(String email, String password) async {
-  //   try {
-  //     UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-  //       email: email, password: password);
-  //     User? user = userCredential.user;
-  //     return _userFromFirebaseUser(user!);
+  Future registerWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
+      User? user = userCredential.user;
+      return _userFromFirebaseUser(user!);
 
-  //   } catch (e) {
-  //     print(e.toString());
-  //     return null;
-  //   }
-  // }
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+    //####### User Resgistration ########
 
-  // Future logOut() async {
-  //   try {
-  //     return await _auth.signOut();
-  //   } catch(error) {
-  //     print(error.toString());
-  //     return null;
-  //   }
-  // }
+    //####### User Login ########
+
+  Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      User? user = userCredential.user;
+      return _userFromFirebaseUser(user);
+      
+    } catch (e) {
+      print(e.toString());
+      return null;
+
+    }
+  }
+
+    //####### User Login ########
+
+  Future logOut() async {
+    try {
+      return await _auth.signOut();
+    } catch(error) {
+      print(error.toString());
+      return null;
+    }
+  }
+    //####### User Resgistration ########
 
 }
 

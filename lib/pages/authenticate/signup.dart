@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:indexchain/pages/loading.dart';
 import 'package:indexchain/provider/providing.dart';
 
 
@@ -18,12 +19,16 @@ class _SignUpState extends State<SignUp> {
   String signUp = "Signup";
 
   String userName = "", email = "", password = "", confirmPassword = "";
+  String error = "";
 
   final _formKey = GlobalKey<FormState>();
 
+  bool loading = false;
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple[900],
         title: Text(
@@ -150,12 +155,26 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 SizedBox(height: 20.0),
+                Text(
+                  error,
+                  style: TextStyle(color: Colors.red[500], fontFamily: "Fredoka", fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 20.0),
                 SizedBox(
                   width: 250,
                   child: TextButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-
+                        setState(() {
+                          loading = true;
+                        });
+                        dynamic response = await _auth.registerWithEmailAndPassword(email, password);
+                        if (response == null) {
+                          setState(() {
+                           error = "please provide a valid email";
+                           loading = false;
+                          });
+                        }
                       }
                       
                     },
@@ -171,6 +190,7 @@ class _SignUpState extends State<SignUp> {
                       )
                     ),
                 ),
+                
                 
                 SizedBox(height: 40),
                 TextButton.icon(

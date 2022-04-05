@@ -1,7 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:indexchain/pages/authenticate/signup.dart';
+import 'package:indexchain/pages/loading.dart';
 import 'package:indexchain/provider/providing.dart';
 
 
@@ -24,12 +24,18 @@ class _LogInState extends State<LogIn> {
   String register = "Register";
 
   final AuthService _auth = AuthService();
-  String email = "", password ="";
+
+  String email = "", password ="", error = "";
+  final _formKey = GlobalKey<FormState>();
+
+  String hintWarning = "Email and password are required";
+
+  bool loading = false;
   
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       appBar: AppBar(
         title: Text(login),
         centerTitle: true,
@@ -41,6 +47,7 @@ class _LogInState extends State<LogIn> {
         child: SingleChildScrollView(
           reverse: true,
           child: Form(
+            key: _formKey,
             child: Column(
               children: <Widget>[
                 
@@ -55,6 +62,13 @@ class _LogInState extends State<LogIn> {
                     setState(() {
                       email = value;
                     });
+                  },
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return hintWarning;
+                    } else {
+                      return null;
+                    }
                   },
                   decoration: InputDecoration(
                     labelText: "enter username",
@@ -76,6 +90,13 @@ class _LogInState extends State<LogIn> {
                       password = value;
                     });
                   },
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return hintWarning;
+                    } else {
+                      return null;
+                    }
+                  },
                   decoration: InputDecoration(
                     labelText: "enter password",
                     hintText: "password",
@@ -88,16 +109,26 @@ class _LogInState extends State<LogIn> {
                   ),
                 ),
                 SizedBox(height: 40.0),
+                Text(
+                  error,
+                  style: TextStyle(color: Colors.red[500], fontFamily: "Fredoka", fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 20,),
                 SizedBox(
                   width: 250,
                   child: TextButton(
-                    onPressed: () async {
-                      dynamic response = await _auth.signInAnon();
-                      if (response == null) {
-                        print("error signing in");
-                      } else {
-                        print("Singned in");
-                        print(response.uid);
+                    onPressed: ()  async {
+                      if (_formKey.currentState!.validate()) {
+                        setState(() {
+                          loading = true;
+                        });
+                        dynamic response = await _auth.signInWithEmailAndPassword(email, password);
+                        if (response == null) {
+                          setState(() {
+                           error = "Credentials not valid";
+                           loading = false;
+                          });
+                        }
                       }
                     },
                     child: Text(

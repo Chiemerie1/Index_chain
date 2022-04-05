@@ -18,7 +18,7 @@ class IndexPage extends StatefulWidget {
 
 class _IndexPageState extends State<IndexPage> {
 
-  
+    
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CoinProvider>(context);

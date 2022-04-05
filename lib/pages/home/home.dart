@@ -4,7 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:indexchain/pages/home/activity.dart';
 import 'package:indexchain/pages/home/index.dart';
+import 'package:indexchain/pages/home/prices.dart';
 import 'package:indexchain/pages/settings_children/settings.dart';
+import 'package:indexchain/provider/providing.dart';
 
 
 
@@ -27,15 +29,17 @@ class _HomeState extends State<Home> {
 
   final navBarPages = [
     IndexPage(),
-    Card(child: Text("Wallet address"),),
+    Prices(),
     Activity(),
     Settings(),
   ];
 
   
   @override
-  Widget build(BuildContext context) 
-  {
+  Widget build(BuildContext context) {
+
+    final AuthService _auth = AuthService();
+
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.purple[900],
@@ -52,12 +56,11 @@ class _HomeState extends State<Home> {
         // ###### AppBAr widgets ######
         actions: [
           IconButton(
-            onPressed: () {}, 
-            icon: Icon(Icons.add_box_outlined, color: Colors.purple[900],)),
-          IconButton(
-            onPressed:() {},
-            icon: Icon(Icons.settings_applications, color: Colors.purple[900]),
-          )
+            onPressed: () async {
+              await _auth.logOut();
+            }, 
+            icon: Icon(Icons.logout_outlined, color: Colors.purple[900],)),
+          
         ],
         elevation: 0.0
       ),

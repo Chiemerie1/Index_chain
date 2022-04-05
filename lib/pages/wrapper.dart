@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:indexchain/pages/authenticate/login.dart';
 import 'package:indexchain/pages/home/home.dart';
+import 'package:indexchain/provider/providing.dart';
+import 'package:provider/provider.dart';
 
 
 class Wrapper extends StatelessWidget {
@@ -8,6 +11,12 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LogIn();
+    final user = Provider.of<Person?>(context);
+    
+    if (user == null) {
+      return LogIn();
+    } else {
+      return Home();
+    }
   }
 }
