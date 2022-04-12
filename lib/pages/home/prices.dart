@@ -3,7 +3,6 @@
 import 'package:coingecko_api/coingecko_api.dart';
 import 'package:coingecko_api/data/market.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 
 
@@ -20,14 +19,13 @@ CoinGeckoApi priceApi = CoinGeckoApi();
 class GetPrices {
   
   Future<List<Market>> getPrices() async {
-    print("We are geting the prices");
     var price = await priceApi.coins.listCoinMarkets(
       vsCurrency: "usd",
       coinIds: [
-        "bitcoin", "solana", "binanomics", "usd coin","terra", "shiba-inu", "avalanche", "polkadot",
+        "bitcoin", "solana", "binanomics", "usd-coin", "terra", "shiba-inu", "avalanche", "polkadot",
         "ethereum", "ageofgods", "binary-cat", "binaryx", "bingo-cash", "binom-protocol", "bios",
-        "litecoin", "biotron", "birdchain", "bird-money", "bishu-finance", "bishu-finance", "bitacium",
-        "stellar",  "bitcash", "bitcicoin","bitclave", "bitcloud", "bitclout", "bitcoin-anonymous"
+        "litecoin", "biotron", "birdchain", "bird-money", "bishu-finance", "bitacium",
+        "stellar",  "bitcash", "bitcicoin","bitclave", "bitcloud", "bitclout", "bitcoin-anonymous",
         "cardano", "bitcoin-cash", "bitcoin-god", "bitcoin-scrypt", "bitcoinx", "zebec-protocol",
         "monero", "zinja", "zirve-coin", "zodiac", "spartacus", "yearn-finance", "redlight-node-district",
         "tether",  "redshiba", "reecoin", "rhythm", "ribbon-finance", "richochet",  "richquack",
@@ -35,12 +33,13 @@ class GetPrices {
         "daoland", "daolaunch", "daosquare", "daostack","dark-matter", "tetherblack", "tetherino", "themis",
         "the-citadel", "the-collective-coin", "the-garden", "thekey", "the-king", "the-luxury", "the-neko",
         "ixo", "jackpot", "jacy", "the-sandbox", "the-reaper", "theos", "the-node",
-        "stellar",  "jaguarswap", "jarvis","jasmycoin", "javascript-token", "jedstar", "jeet"
+        "jaguarswap", "jarvis","jasmycoin", "javascript-token", "jedstar", "jeet",
         "jem", "jeritex", "jet", "jigen", "jigstack", "jindoge",
         "jmtime", "jobchain", "jobcash", "joe", "joint", "jointer", "joulecoin",
-        "joys",  "joystream", "jpegvaultdao", "jpool", "jpool", "juggernaut",  "juicebox",
+        "joys",  "joystream", "jpegvaultdao", "jpool", "juggernaut",  "juicebox",
         "julswap"
-        ],
+
+      ],
       itemsPerPage: 50,
       );
       

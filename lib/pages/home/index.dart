@@ -1,11 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_initializing_formals
 
-
 import 'package:flutter/material.dart';
+import 'package:indexchain/database/coin_data.dart';
 import 'package:provider/provider.dart';
 import 'package:indexchain/provider/providing.dart';
-
-
 
 
 
@@ -22,8 +20,13 @@ class _IndexPageState extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CoinProvider>(context);
-    final coins = provider.coin;
     final total = provider.total;
+    // List<UserData> userData = Provider.of<List<UserData>>(context);
+    final coindata = Provider.of<List<CoinData>>(context);
+    // coindata.forEach((coin){
+    //   print(coin.name);
+    //   print(coin.price);
+    // });
 
     return Scaffold(
       backgroundColor: Colors.grey[50],
@@ -65,44 +68,31 @@ class _IndexPageState extends State<IndexPage> {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
-          // ###### Coin List #######
           Expanded(
             child: ListView.builder(
-              itemCount: coins.length,
-              padding: EdgeInsets.all(0.0),
-              physics: BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Card(
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage("assets/${coins[index].coinIcon}"),
-                    ),
-                    title: Text(
-                      coins[index].cryptoName,
-                      style: TextStyle(
-                        fontFamily: "Fredoka",
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold
-                      )),
-                    trailing: Text(
-                      "\$${coins[index].amount}",
-                      style: TextStyle(
-                        fontFamily: "Fredoka",
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold
-                      ),),
+              itemCount: coindata.length,
+              itemBuilder: ((context, index) {
+                if (coindata.isEmpty){
+                  return LinearProgressIndicator();
+                }
+                var coin = coindata[index];
+                return ListTile(
+                  title: Text(
+                    coin.name
+                  ),
+                  trailing: Text(
+                    "${coin.price}"
                   ),
                 );
-            },
-
-            ),
-          )
+              })
+            )
+          ),
         ],
       )
     );
   }
 }
+

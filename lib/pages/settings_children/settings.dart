@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-
 class Settings extends StatefulWidget {
 
   @override
@@ -10,10 +9,11 @@ class Settings extends StatefulWidget {
 }
 
 
-
 class _SettingsState extends State<Settings> {
+  
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[50],
@@ -148,7 +148,7 @@ class _SettingsState extends State<Settings> {
                   ),
                   onPressed:() {},
                   child: Text(
-                    "Username",
+                    "Welcome",
                     style: TextStyle(
                       fontFamily: "Fredoka",
                       fontSize: 18.0,
@@ -157,10 +157,36 @@ class _SettingsState extends State<Settings> {
                       wordSpacing: 2.0,
                       color: Colors.white
                     ),
-                  ),
+                  )
+                   
                 ),
               ),
-            ), 
+            ),
+        //     Expanded(
+        //       child: ListView.builder(
+        //         itemCount: userData.length,
+        //         padding: EdgeInsets.all(0.0),
+        //         physics: BouncingScrollPhysics(),
+        //         itemBuilder: (context, index) {
+        //           return ListTile(
+        //             leading: Icon(Icons.person, color: Colors.purple[900]),
+        //             title: Text(
+        //               "userData[index].name,",
+        //             style: TextStyle(
+        //               fontFamily: "Fredoka",
+        //               fontSize: 18.0,
+        //               fontWeight: FontWeight.bold,
+        //               letterSpacing: 2.0,
+        //               wordSpacing: 2.0,
+        //               color: Colors.purple[900]
+        //             ),
+        //             ),
+        //             );
+                  
+        //         },
+      
+        //       ),
+        // ),
           ],
         ),
       ),

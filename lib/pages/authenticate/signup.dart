@@ -8,6 +8,7 @@ import 'package:indexchain/provider/providing.dart';
 
 class SignUp extends StatefulWidget {
 
+
   @override
   State<SignUp> createState() => _SignUpState();
 }

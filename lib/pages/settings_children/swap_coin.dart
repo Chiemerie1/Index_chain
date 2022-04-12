@@ -1,12 +1,12 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_initializing_formals
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
+
 
 import 'package:flutter/material.dart';
-import 'package:cryptocoins_icons/cryptocoins_icons.dart';
+import 'package:indexchain/pages/constants.dart';
 
 
 
 class Swap extends StatefulWidget {
-  const Swap({ Key? key }) : super(key: key);
 
   @override
   State<Swap> createState() => _SwapState();
@@ -14,84 +14,172 @@ class Swap extends StatefulWidget {
 
 class _SwapState extends State<Swap> {
 
+  String amount = "";
+  final _formKey = GlobalKey<FormState>();
+
+  final offwhite = Color(0xfff8f0e3);
+  // ####### Drop down menu #######
+  
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.purple[900],
-        backgroundColor: Colors.grey[50],
-        elevation: 0.0,
-        title: Text(
-          "Coin Swap",
-          style: TextStyle(
-            fontFamily: "Fredoka",
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2,
-            color: Colors.purple[900]
+      backgroundColor: Colors.purple[900],
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              SizedBox(height: 90),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Swap Coin",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Fredoka",
+                        letterSpacing: 2.0,
+                        color: Colors.white,
+                        wordSpacing: 2.0, ),
+                      ),
+                      SizedBox(height: 10.0,),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButtonFormField(
+                          value: bitcoinDefaultValue,
+                          elevation: 10,
+                          dropdownColor: Colors.purple[500],
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Fredoka",
+                            letterSpacing: 2.0,
+                            wordSpacing: 2.0, ),
+                          isExpanded: true,
+                          icon: Icon(Icons.arrow_circle_down_rounded, color: Colors.white,),
+                          iconSize: 30,
+                          items: bitcoinDropDownItems.map((bitcoinDropDownItems) {
+                            return DropdownMenuItem(
+                              value: bitcoinDropDownItems,
+                              child: Text(bitcoinDropDownItems),
+                            );
+                          }).toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              bitcoinDefaultValue = value!;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+        
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButtonFormField(
+                          
+                          value: ethereumDefaultValue,
+                          elevation: 10,
+                          dropdownColor: Colors.purple[500],
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Fredoka",
+                            letterSpacing: 2.0,
+                            wordSpacing: 2.0, ),
+                          isExpanded: true,
+                          icon: Icon(Icons.arrow_circle_down_rounded, color: Colors.white,),
+                          iconSize: 30,
+                          items: ethereumDropDownItems.map((ethereumDropDownItems) {
+                            return DropdownMenuItem(
+                              value: ethereumDropDownItems,
+                              child: Text(ethereumDropDownItems),
+                            );
+                          }).toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              ethereumDefaultValue = value!;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    
+                      SizedBox(height: 20,),
+                      Card(
+                        elevation: 10.0,
+                        margin: EdgeInsets.all(2),
+                        color: Colors.white,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(30.0),
+                              child: Center(
+                                child: TextFormField(
+                                  validator: (value) => value!.isEmpty ? "Enter a USD equivalence" : null,
+                                  onChanged: ((value) {
+                                    setState(() {
+                                      amount = value;
+                                    });
+                                  }),
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    labelText: "enter value",
+                                    hintText: "Amount",
+                                    prefixIcon: Icon(Icons.attach_money, color: Colors.purple[900],),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.purple),
+                                      borderRadius: BorderRadius.circular(20.0)
+                                    )
+                                  ),
+                                ),
+                              ),
+                            ),
+                        SizedBox(height: 40.0),               
+            
+            ],
+                    ),
+                  ),
+                  SizedBox(height: 25,),
+                  TextButton(
+                    // ######## Drop down action button #########
+                    onPressed: (() async {
+                      print(amount);
+                      print(bitcoinDefaultValue);
+                      print(ethereumDefaultValue);
+                    }),
+                    style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(Size(300, 0)),
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(16))
+                    ),
+                    child: Text(
+                      "Continue",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.purple[900],
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Fredoka",
+                        letterSpacing: 2.0,
+                        wordSpacing: 2.0,
+                      ),
+                    )
+                  ),
+                ],
+                ),
+              )
+            ],
           ),
-          ),
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(20,10,20,10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-          OutlinedButton.icon(
-            style: OutlinedButton.styleFrom(
-              side: BorderSide(width: 2.0, color: Colors.purple),
-            ),
-            onPressed: () {},
-            icon: Icon(CryptoCoinIcons.BTC, color: Colors.purple[900],),
-            label: Text(
-              "Swap BTC",
-              style: TextStyle(
-                fontFamily: "Fredoka",
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2,
-                color: Colors.purple[900]
-              ),
-            )
-            
-          ),
-          SizedBox(height: 20),
-          OutlinedButton.icon(
-            style: OutlinedButton.styleFrom(
-              side: BorderSide(width: 2.0, color: Colors.purple),
-            ),
-            onPressed: () {},
-            icon: Icon(CryptoCoinIcons.ETH, color: Colors.purple[900],),
-            label: Text(
-              "Swap ETH",
-              style: TextStyle(
-                fontFamily: "Fredoka",
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2,
-                color: Colors.purple[900]
-              ),
-            )
-          ),
-          SizedBox(height: 20,),
-          OutlinedButton.icon(
-            style: OutlinedButton.styleFrom(
-              side: BorderSide(width: 2.0, color: Colors.purple),
-            ),
-            onPressed: () {},
-            icon: Icon(CryptoCoinIcons.USDT, color: Colors.purple[900],),
-            label: Text(
-              "Swap USDT",
-              style: TextStyle(
-                fontFamily: "Fredoka",
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2,
-                color: Colors.purple[900]
-              ),
-            )
-            
-          ),
-
-
-        ],),
-      )
     );
   }
 }

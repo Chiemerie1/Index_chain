@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
-
 import 'package:flutter/material.dart';
 import 'package:indexchain/pages/authenticate/login.dart';
 import 'package:indexchain/pages/authenticate/signup.dart';
@@ -16,6 +15,9 @@ import 'package:indexchain/pages/wrapper.dart';
 import 'package:indexchain/provider/providing.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:indexchain/database/database.dart';
+import 'package:indexchain/database/coin_data.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,8 +34,12 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => CoinProvider()),
         StreamProvider<Person?>.value(
-          value: AuthService().user, initialData: null,
-        ),
+          value: AuthService().user, initialData: null,),
+
+        StreamProvider<List<CoinData>>.value(
+          value: Database(uid: "").allCoins,
+          initialData: [],
+          ),
         
       
       ],
@@ -56,9 +62,6 @@ class MyApp extends StatelessWidget {
    
   }
 }
-
-
-
 
 
 

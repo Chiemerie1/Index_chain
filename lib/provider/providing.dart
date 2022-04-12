@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:indexchain/database/database.dart';
+import 'package:indexchain/database/coin_data.dart';
 
 //########### Providers ############
 
@@ -78,7 +80,23 @@ class AuthService {
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email, password: password);
       User? user = userCredential.user;
-      return _userFromFirebaseUser(user!);
+      
+      await Database(uid: user!.uid).createCoinData([
+        CoinData(name: "bitcoin", price: 100),
+        CoinData(name: "ethereum", price: 100),
+        CoinData(name: "tether", price: 100),
+        CoinData(name: "solana", price: 100),
+        CoinData(name: "avalanche", price: 100),
+        CoinData(name: "yearn finance", price: 100),
+        CoinData(name: "terra", price: 100),
+        CoinData(name: "shiba-inu", price: 100),
+        CoinData(name: "polkadot", price: 100),
+        CoinData(name: "joe", price: 100),
+        CoinData(name: "bitcoin-cash", price: 100),
+        CoinData(name: "monero", price: 100),
+      ]);
+
+      return _userFromFirebaseUser(user);
 
     } catch (e) {
       print(e.toString());
@@ -116,13 +134,3 @@ class AuthService {
 
 }
 
-
-//  on FirebaseAuthException catch (error) {
-//       if (error.code == "weak-password") {
-//         print("provide a strong password");
-//       }else if (error.code == "email-already-in-use") {
-//         print("Email is already resigistered");
-//       }
-//     } catch (error) {
-//       print(error);
-//     }
