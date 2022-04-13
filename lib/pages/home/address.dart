@@ -11,6 +11,13 @@ class Address extends StatefulWidget {
 }
 
 class _AddressState extends State<Address> {
+
+  String btcAddress = "1Furfhe8BFbkEhXn1xcYPr8jYAACNpfV7p";
+  String ethAdress = "0xE7Db06d4acE56067Ac15cdb9b7BAe1140ccC21f8";
+  String usdtAddress = "TYUfrG53TvQ1uXza5Vw8Q4AkFnd2ts1bSm";
+
+  
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,34 +35,93 @@ class _AddressState extends State<Address> {
                   letterSpacing: 2,
                   fontSize: 30,
                   color: Colors.grey[800]
-          ),
+              ),
               ),
               SizedBox(height: 40,),
-              Container(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  "<Here goes your wallet address>",
-                  style: TextStyle(
+              Text(
+                "Bitcoin Address",
+                style: TextStyle(
                   fontFamily: "Fredoka",
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
-                  fontSize: 18,
-                  color: Colors.grey[800],
-                )
+                  fontSize: 20,
+                  color: Colors.grey[800]
+              ),
+              ),
+              Center(
+                child: TextField(
+                  controller: TextEditingController(
+                    text: btcAddress),
+                style: TextStyle(
+                  fontFamily: "Fredoka",
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2,
+                  fontSize: 20,
+                  color: Colors.grey[800]
                 ),
+              ),
+              ),
+              SizedBox(height: 20.0,),
+              Text(
+                "Ethereum Address",
+                style: TextStyle(
+                  fontFamily: "Fredoka",
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2,
+                  fontSize: 20,
+                  color: Colors.grey[800]
+              ),
+              ),
+              Center(
+                child: TextField(
+                  controller: TextEditingController(
+                    text: ethAdress),
+                style: TextStyle(
+                  fontFamily: "Fredoka",
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2,
+                  fontSize: 20,
+                  color: Colors.grey[800]
+          ),
+              ),
+              ),
+              SizedBox(height: 20.0,),
+              Text(
+                "USDT Address",
+                style: TextStyle(
+                  fontFamily: "Fredoka",
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2,
+                  fontSize: 20,
+                  color: Colors.grey[800]
+              ),
+              ),
+              Center(
+                child: TextField(
+                  controller: TextEditingController(
+                    text: usdtAddress),
+                style: TextStyle(
+                  fontFamily: "Fredoka",
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2,
+                  fontSize: 20,
+                  color: Colors.grey[800]
+          ),
+              ),
               )
+
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20)),
-            backgroundColor: Colors.purple[900],
-            child: Icon(Icons.create_outlined),
+      //   floatingActionButton: FloatingActionButton(
+      //     onPressed: () {},
+      //     shape: RoundedRectangleBorder(
+      //       borderRadius: BorderRadius.circular(20)),
+      //       backgroundColor: Colors.purple[900],
+      //       child: Icon(Icons.create_outlined),
 
         
-      ),
+      // ),
     ));
   }
 }

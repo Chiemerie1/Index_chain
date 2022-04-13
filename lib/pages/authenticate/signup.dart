@@ -19,7 +19,7 @@ class _SignUpState extends State<SignUp> {
 
   String signUp = "Signup";
 
-  String userName = "", email = "", password = "", confirmPassword = "";
+  String email = "", password = "", confirmPassword = "";
   String error = "";
 
   final _formKey = GlobalKey<FormState>();
@@ -53,31 +53,6 @@ class _SignUpState extends State<SignUp> {
                 
                 // ######### sign up details #########
                 // ######### credentials #########
-          
-                TextFormField(
-                  onChanged: (value) {
-                    setState((){
-                      userName = value;
-                    });
-                  },
-                  validator: (value) {
-                   if (value != null && value.isEmpty) {
-                     return "Enter a username";
-                   } else {
-                     return null;
-                   }
-                  },
-                  decoration: InputDecoration(
-                    labelText: "enter username",
-                    prefixIcon: Icon(Icons.draw_outlined, color: Colors.purple[900],),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.purple),
-                      borderRadius: BorderRadius.circular(20.0)
-                    )
-                  ),
-                ),
-                SizedBox(height:20.0),
           
                 TextFormField(
                   onChanged: (value) {

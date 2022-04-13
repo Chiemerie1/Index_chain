@@ -1,7 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_initializing_formals
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:indexchain/database/coin_data.dart';
+import 'package:indexchain/provider/providers/user_data.dart';
 import 'package:provider/provider.dart';
 import 'package:indexchain/provider/providing.dart';
 
@@ -22,7 +24,8 @@ class _IndexPageState extends State<IndexPage> {
     final provider = Provider.of<CoinProvider>(context);
     final total = provider.total;
     // List<UserData> userData = Provider.of<List<UserData>>(context);
-    final coindata = Provider.of<List<CoinData>>(context);
+    final coindata = Provider.of<UserCoinData>(context);
+
     // coindata.forEach((coin){
     //   print(coin.name);
     //   print(coin.price);
@@ -73,12 +76,12 @@ class _IndexPageState extends State<IndexPage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: coindata.length,
+              itemCount: coindata.coins.length,
               itemBuilder: ((context, index) {
-                if (coindata.isEmpty){
+                if (coindata.coins.isEmpty){
                   return LinearProgressIndicator();
                 }
-                var coin = coindata[index];
+                var coin = coindata.coins[index];
                 return ListTile(
                   title: Text(
                     coin.name

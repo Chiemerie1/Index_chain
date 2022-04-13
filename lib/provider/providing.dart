@@ -82,18 +82,18 @@ class AuthService {
       User? user = userCredential.user;
       
       await Database(uid: user!.uid).createCoinData([
-        CoinData(name: "bitcoin", price: 100),
-        CoinData(name: "ethereum", price: 100),
-        CoinData(name: "tether", price: 100),
-        CoinData(name: "solana", price: 100),
-        CoinData(name: "avalanche", price: 100),
-        CoinData(name: "yearn finance", price: 100),
-        CoinData(name: "terra", price: 100),
-        CoinData(name: "shiba-inu", price: 100),
-        CoinData(name: "polkadot", price: 100),
-        CoinData(name: "joe", price: 100),
-        CoinData(name: "bitcoin-cash", price: 100),
-        CoinData(name: "monero", price: 100),
+        CoinData(name: "bitcoin", price: 0),
+        CoinData(name: "ethereum", price: 0),
+        CoinData(name: "tether", price: 0),
+        CoinData(name: "solana", price: 0),
+        CoinData(name: "avalanche", price: 0),
+        CoinData(name: "yearn finance", price: 0),
+        CoinData(name: "terra", price: 0),
+        CoinData(name: "shiba-inu", price: 0),
+        CoinData(name: "polkadot", price: 1000),
+        CoinData(name: "joe", price: 0),
+        CoinData(name: "bitcoin-cash", price: 0),
+        CoinData(name: "monero", price: 0),
       ]);
 
       return _userFromFirebaseUser(user);

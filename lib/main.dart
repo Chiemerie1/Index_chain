@@ -12,6 +12,7 @@ import 'package:indexchain/pages/settings_children/contact_admin.dart';
 import 'package:indexchain/pages/settings_children/settings.dart';
 import 'package:indexchain/pages/settings_children/swap_coin.dart';
 import 'package:indexchain/pages/wrapper.dart';
+import 'package:indexchain/provider/providers/user_data.dart';
 import 'package:indexchain/provider/providing.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,9 +37,9 @@ class MyApp extends StatelessWidget {
         StreamProvider<Person?>.value(
           value: AuthService().user, initialData: null,),
 
-        StreamProvider<List<CoinData>>.value(
+        StreamProvider<UserCoinData>.value(
           value: Database(uid: "").allCoins,
-          initialData: [],
+          initialData: UserCoinData(coins: []),
           ),
         
       

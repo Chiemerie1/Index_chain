@@ -71,8 +71,7 @@ class _LogInState extends State<LogIn> {
                     }
                   },
                   decoration: InputDecoration(
-                    labelText: "enter username",
-                    hintText: "Username",
+                    labelText: "enter email",
                     prefixIcon: Icon(Icons.person, color: Colors.purple[900],),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -99,7 +98,6 @@ class _LogInState extends State<LogIn> {
                   },
                   decoration: InputDecoration(
                     labelText: "enter password",
-                    hintText: "password",
                     prefixIcon: Icon(Icons.security, color: Colors.purple[900],),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(

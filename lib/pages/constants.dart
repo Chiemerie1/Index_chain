@@ -4,9 +4,9 @@ String bitcoinDefaultValue = "Swap BTC to";
         "Swap BTC to", "Swap ethereum to",  "Swap usdt to"
       ];
 
-  String ethereumDefaultValue = "ethereum";
+  String coinsDefaultValue = "ethereum";
 
-  var ethereumDropDownItems = [
+  var coinsDropDownItems = [
         "ethereum", "bitcoin", "solana", "binanomics", "usd coin", "terra", "shiba inu", "avalanche", "polkadot",
         "ageofgods", "binary cat", "binaryx", "bingo cash", "binom protocol", "bios",
         "litecoin", "biotron", "birdchain", "bird money", "bishu finance", "bitacium",

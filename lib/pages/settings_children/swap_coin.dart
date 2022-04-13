@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:indexchain/pages/constants.dart';
+import 'package:indexchain/database/database.dart';
 
 
 
@@ -83,8 +84,7 @@ class _SwapState extends State<Swap> {
                       padding: const EdgeInsets.all(20.0),
                       child: DropdownButtonHideUnderline(
                         child: DropdownButtonFormField(
-                          
-                          value: ethereumDefaultValue,
+                          value: coinsDefaultValue,
                           elevation: 10,
                           dropdownColor: Colors.purple[500],
                           style: TextStyle(
@@ -96,15 +96,15 @@ class _SwapState extends State<Swap> {
                           isExpanded: true,
                           icon: Icon(Icons.arrow_circle_down_rounded, color: Colors.white,),
                           iconSize: 30,
-                          items: ethereumDropDownItems.map((ethereumDropDownItems) {
+                          items: coinsDropDownItems.map((coinsDropDownItems) {
                             return DropdownMenuItem(
-                              value: ethereumDropDownItems,
-                              child: Text(ethereumDropDownItems),
+                              value: coinsDropDownItems,
+                              child: Text(coinsDropDownItems),
                             );
                           }).toList(),
                           onChanged: (String? value) {
                             setState(() {
-                              ethereumDefaultValue = value!;
+                              coinsDefaultValue = value!;
                             });
                           },
                         ),
@@ -152,9 +152,8 @@ class _SwapState extends State<Swap> {
                   TextButton(
                     // ######## Drop down action button #########
                     onPressed: (() async {
-                      print(amount);
-                      print(bitcoinDefaultValue);
-                      print(ethereumDefaultValue);
+                      userCoinSwapActivity(bitcoinDefaultValue, coinsDefaultValue, amount);
+
                     }),
                     style: ButtonStyle(
                       minimumSize: MaterialStateProperty.all(Size(300, 0)),
@@ -162,7 +161,7 @@ class _SwapState extends State<Swap> {
                       padding: MaterialStateProperty.all(EdgeInsets.all(16))
                     ),
                     child: Text(
-                      "Continue",
+                      "Swap",
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.purple[900],
