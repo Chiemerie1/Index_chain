@@ -152,8 +152,8 @@ class _SwapState extends State<Swap> {
                   TextButton(
                     // ######## Drop down action button #########
                     onPressed: (() async {
-                      userCoinSwapActivity(bitcoinDefaultValue, coinsDefaultValue, amount);
-
+                      await userCoinSwapActivity(bitcoinDefaultValue, coinsDefaultValue, amount);
+                      Navigator.pushNamed(context, "/confirm");
                     }),
                     style: ButtonStyle(
                       minimumSize: MaterialStateProperty.all(Size(300, 0)),

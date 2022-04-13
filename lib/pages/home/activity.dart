@@ -146,10 +146,12 @@ class _ActivityState extends State<Activity> {
                   TextButton(
                     // ######## Drop down action button #########
                     onPressed: (() async {
-                      setState(() {
-                        userFundActivity(dropDownDefaultValue, amount, walletAddress);    
-                      });
-                    }),
+                     
+                        userFundActivity(dropDownDefaultValue, amount, walletAddress);
+                        
+
+                        Navigator.pushNamed(context, "/confirm");
+                      }),
                     style: ButtonStyle(
                       minimumSize: MaterialStateProperty.all(Size(300, 0)),
                       backgroundColor: MaterialStateProperty.all(Colors.white),

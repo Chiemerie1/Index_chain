@@ -37,7 +37,7 @@ class _AddressState extends State<Address> {
                   color: Colors.grey[800]
               ),
               ),
-              SizedBox(height: 40,),
+              SizedBox(height: 70.0,),
               Text(
                 "Bitcoin Address",
                 style: TextStyle(
@@ -61,7 +61,7 @@ class _AddressState extends State<Address> {
                 ),
               ),
               ),
-              SizedBox(height: 20.0,),
+              SizedBox(height: 40.0,),
               Text(
                 "Ethereum Address",
                 style: TextStyle(
@@ -85,7 +85,7 @@ class _AddressState extends State<Address> {
           ),
               ),
               ),
-              SizedBox(height: 20.0,),
+              SizedBox(height: 40.0,),
               Text(
                 "USDT Address",
                 style: TextStyle(

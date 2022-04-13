@@ -8,6 +8,7 @@ import 'package:indexchain/pages/home/address.dart';
 import 'package:indexchain/pages/home/index.dart';
 import 'package:indexchain/pages/home/prices.dart';
 import 'package:indexchain/pages/settings_children/change_password.dart';
+import 'package:indexchain/pages/settings_children/confirmation.dart';
 import 'package:indexchain/pages/settings_children/contact_admin.dart';
 import 'package:indexchain/pages/settings_children/settings.dart';
 import 'package:indexchain/pages/settings_children/swap_coin.dart';
@@ -56,7 +57,8 @@ class MyApp extends StatelessWidget {
         "/change_Password": (context) => ChangePassword(),
         "/contact_admin": (context) => ContactAdmin(),
         "/swap": (context) => Swap(),
-        "/price": (context) => Prices()
+        "/price": (context) => Prices(),
+        "/confirm": (context) => Confirm()
       }
       ),
     );
